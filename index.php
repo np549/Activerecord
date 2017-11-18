@@ -14,8 +14,6 @@ class dbConn{
             // assign PDO object to db variable
             self::$db = new PDO( 'mysql:host=' . CONNECTION .';dbname=' . DATABASE, USERNAME, PASSWORD );
             self::$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-            echo "connection done";
-            echo "<br>";
         }
         catch (PDOException $e) {
             //Output error - would normally log this to error file rather than output to user.
@@ -116,23 +114,44 @@ class todo extends model {
     }
 }
 // this would be the method to put in the index page for accounts
+echo "accounts findall";
+echo "<br>";
 $records = accounts::findAll();
-//print_r($records);
+print_r($records);
+echo "<br><hr>";
 // this would be the method to put in the index page for todos
+echo "todos findall";
+echo "<br>";
 $records = todos::findAll();
-//print_r($records);
+print_r($records);
+echo "<br><hr>";
 //this code is used to get one record and is used for showing one record or updating one record
+echo "todo findOne";
+echo "<br>";
 $record = todos::findOne(1);
-//print_r($record);
+print_r($record);
+echo "<br><hr>";
 //this is used to save the record or update it (if you know how to make update work and insert)
-// $record->save();
+echo "accounts save find one";
+echo "<br>";
+//$record->save();
 //$record = accounts::findOne(1);
+echo "<br><hr>";
 //This is how you would save a new todo item
+echo "new todo";
+echo "<br>";
 $record = new todo();
 $record->message = 'some task';
 $record->isdone = 0;
+echo "<br><hr>";
 //$record->save();
+echo "todo save";
+echo "<br>";
 print_r($record);
+echo "<br><hr>";
+echo "todo create";
+echo "<br>";
 $record = todos::create();
 print_r($record);
+echo "<br><hr>";
 ?>
