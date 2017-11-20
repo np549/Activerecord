@@ -49,6 +49,7 @@ class collection {
         $statement->setFetchMode(PDO::FETCH_CLASS, $class);
         $recordsSet =  $statement->fetchAll();
         return $recordsSet;
+        
 
     }
     static public function findOne($id) {
@@ -121,14 +122,42 @@ class todo extends model {
 echo "accounts findall";
 echo "<br>";
 $records = accounts::findAll();
-print_r($records);
+//print_r($records); //for printing array accounts find all
 
-echo "<br><hr>";
+
+//for first testing iteration of array
+/*echo "<br><hr>";
 $rec= $records[0];
 foreach ($rec as $r) {
 	echo $r;
 };
+echo "<br><hr>";*/
+$i = 0; /* for illustrative purposes only */
+$table_str='';
+foreach ($records as $v) {
+	$table_str.= "<table border = '1' style='border-collapse: collapse'>";
+	$rec= $records[$i];
+	$table_str .= "<tr>";
+	foreach ($rec as $r)
+	{
+	
+	$table_str .= "<td>$r</td>";
+	
+	};
+
+    $i++;
+    $table_str .= "</tr>";
+    $table_str .= "</table>";
+}
 echo "<br><hr>";
+print_r($table_str);
+echo "<br><hr>";
+// this would be the method to put in the index page for todos
+echo "todos findall";
+echo "<br>";
+$records = todos::findAll();
+/*print_r($records);
+echo "<br><hr>";*/
 $i = 0; /* for illustrative purposes only */
 
 foreach ($records as $v) {
@@ -143,12 +172,6 @@ foreach ($records as $v) {
     echo "<br>";
 }
 
-echo "<br><hr>";
-// this would be the method to put in the index page for todos
-echo "todos findall";
-echo "<br>";
-$records = todos::findAll();
-print_r($records);
 echo "<br><hr>";
 //this code is used to get one record and is used for showing one record or updating one record
 echo "todo findOne";
