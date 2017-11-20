@@ -101,6 +101,7 @@ class model {
     public function delete() {
         echo 'I just deleted record' . $this->id;
     }
+    
 }
 class account extends model {
 }
@@ -119,6 +120,7 @@ class todo extends model {
     }
 }
 // this would be the method to put in the index page for accounts
+
 echo "accounts findall";
 echo "<br>";
 $records = accounts::findAll();
@@ -135,17 +137,32 @@ echo "<br><hr>";*/
 $i = 0; /* for illustrative purposes only */
 
 $table_str='';
+$table_str.="<table style='table-layout:fixed;width:90%' border='1' >";
+/*$table_str.="<tr>\n";
+$table_str.= "Accounts Findall";
+$table_str.="</tr>";
+$table_str.="<tr>\n";*/
+$table_str.= "<td style=\"word-wrap: break-word\">id</td>";
+$table_str.= "<td style=\"word-wrap: break-word\">email</td>";
+$table_str.= "<td style=\"word-wrap: break-word\">fname</td>";
+$table_str.= "<td style=\"word-wrap: break-word\">lname</td>";
+$table_str.= "<td style=\"word-wrap: break-word\">phone</td>";
+$table_str.= "<td style=\"word-wrap: break-word\">birthday</td>";
+$table_str.= "<td style=\"word-wrap: break-word\">gender</td>";
+$table_str.= "<td style=\"word-wrap: break-word\">password</td>";
+$table_str .= "</tr>";
 
 foreach ($records as $v) {
 	
 	$table_str.= "<table style='table-layout:fixed;width:90%' border='1' >";
 	$rec= $records[$i];
 	$table_str .= "<tr>";
+	//echo "$i";
 	foreach ($rec as $r)
 	{
+	//$k= key($rec);
 	
 	$table_str .= "<td style=\"word-wrap: break-word\">$r</td>";
-	
 	};
 
     $i++;
@@ -156,6 +173,7 @@ echo "<br><hr>";
 print_r($table_str);
 echo "<br><hr>";
 
+        
 
 $result = count($records);
 echo $result;
