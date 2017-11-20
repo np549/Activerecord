@@ -120,7 +120,7 @@ class todo extends model {
     }
 }
 // this would be the method to put in the index page for accounts
-
+echo "<h1>Rough file</h1>";
 echo "accounts findall";
 echo "<br>";
 $records = accounts::findAll();
@@ -179,6 +179,7 @@ $result = count($records);
 echo $result;
 echo "<br><hr>";
 // this would be the method to put in the index page for todos
+
 echo "todos findall";
 echo "<br>";
 $records = todos::findAll();
