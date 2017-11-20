@@ -39,6 +39,9 @@ class collection {
     static public function findAll() {
         $db = dbConn::getConnection();
         $tableName = get_called_class();
+        echo "table name is -";
+        print_r($tableName);
+        echo "<br>";
         $sql = 'SELECT * FROM ' . $tableName;
         $statement = $db->prepare($sql);
         $statement->execute();
@@ -46,6 +49,7 @@ class collection {
         $statement->setFetchMode(PDO::FETCH_CLASS, $class);
         $recordsSet =  $statement->fetchAll();
         return $recordsSet;
+
     }
     static public function findOne($id) {
         $db = dbConn::getConnection();
@@ -81,7 +85,7 @@ class model {
         $array = get_object_vars($this);
         $columnString = implode(',', $array);
         $valueString = ":".implode(',:', $array);
-       // echo "INSERT INTO $tableName (" . $columnString . ") VALUES (" . $valueString . ")</br>";
+       echo "INSERT INTO $tableName (" . $columnString . ") VALUES (" . $valueString . ")</br>";
         echo 'I just saved record: ' . $this->id;
     }
     private function insert() {
@@ -118,6 +122,27 @@ echo "accounts findall";
 echo "<br>";
 $records = accounts::findAll();
 print_r($records);
+
+echo "<br><hr>";
+$rec= $records[0];
+foreach ($rec as $r) {
+	echo $r;
+};
+echo "<br><hr>";
+$i = 0; /* for illustrative purposes only */
+
+foreach ($records as $v) {
+	$rec= $records[$i];
+	foreach ($rec as $r)
+	{
+	echo $r;
+
+	};
+
+    $i++;
+    echo "<br>";
+}
+
 echo "<br><hr>";
 // this would be the method to put in the index page for todos
 echo "todos findall";
@@ -130,6 +155,10 @@ echo "todo findOne";
 echo "<br>";
 $record = todos::findOne(1);
 print_r($record);
+echo "<br><hr>";
+foreach ($record as $r) {
+	echo $r;
+};
 echo "<br><hr>";
 //this is used to save the record or update it (if you know how to make update work and insert)
 echo "accounts save find one";
