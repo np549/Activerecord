@@ -48,9 +48,7 @@ class collection {
         $class = static::$modelName;
         $statement->setFetchMode(PDO::FETCH_CLASS, $class);
         $recordsSet =  $statement->fetchAll();
-        return $recordsSet;
-        
-
+        return $recordsSet;     
     }
     static public function findOne($id) {
         $db = dbConn::getConnection();
@@ -70,7 +68,7 @@ class accounts extends collection {
 class todos extends collection {
     protected static $modelName = 'todo';
 }
-class model {
+class model{
     protected $tableName;
     public function save()
     {
@@ -89,7 +87,7 @@ class model {
        echo "INSERT INTO $tableName (" . $columnString . ") VALUES (" . $valueString . ")</br>";
         echo 'I just saved record: ' . $this->id;
     }
-    private function insert() {
+    public function insert() {
         $sql = 'sometthing';
         return $sql;
     }
@@ -101,7 +99,7 @@ class model {
     public function delete() {
         echo 'I just deleted record' . $this->id;
     }
-    
+
 }
 class account extends model {
 }
@@ -124,6 +122,9 @@ class todo extends model {
 echo "accounts findall";
 echo "<br>";
 $records = accounts::findAll();
+$somethin=  model::insert();
+
+echo $somethin;
 //print_r($records); //for printing array accounts find all
 
 
@@ -202,7 +203,7 @@ echo "<br><hr>";
 //this code is used to get one record and is used for showing one record or updating one record
 echo "todo findOne";
 echo "<br>";
-$record = todos::findOne(1);
+$record = todos::findOne(2);
 print_r($record);
 echo "<br><hr>";
 foreach ($record as $r) {
@@ -225,7 +226,9 @@ echo "<br><hr>";
 //$record->save();
 echo "todo save";
 echo "<br>";
+
 print_r($record);
+
 echo "<br><hr>";
 echo "todo create";
 echo "<br>";
