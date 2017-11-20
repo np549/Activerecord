@@ -133,15 +133,18 @@ foreach ($rec as $r) {
 };
 echo "<br><hr>";*/
 $i = 0; /* for illustrative purposes only */
+
 $table_str='';
+
 foreach ($records as $v) {
-	$table_str.= "<table border = '1' style='border-collapse: collapse'>";
+	
+	$table_str.= "<table style='table-layout:fixed;width:90%' border='1' >";
 	$rec= $records[$i];
 	$table_str .= "<tr>";
 	foreach ($rec as $r)
 	{
 	
-	$table_str .= "<td>$r</td>";
+	$table_str .= "<td style=\"word-wrap: break-word\">$r</td>";
 	
 	};
 
@@ -151,6 +154,11 @@ foreach ($records as $v) {
 }
 echo "<br><hr>";
 print_r($table_str);
+echo "<br><hr>";
+
+
+$result = count($records);
+echo $result;
 echo "<br><hr>";
 // this would be the method to put in the index page for todos
 echo "todos findall";
